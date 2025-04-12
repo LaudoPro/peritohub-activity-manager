@@ -16,6 +16,10 @@ import Laudos from "./pages/Laudos";
 import LaudoForm from "./pages/LaudoForm";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import Perfil from "./pages/Perfil";
+import Configuracoes from "./pages/Configuracoes";
+import RelatorioFotografico from "./pages/RelatorioFotografico";
+import GerarPDF from "./pages/GerarPDF";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +41,10 @@ const App = () => (
             <Route path="/laudos/novo" element={<Layout><LaudoForm /></Layout>} />
             <Route path="/laudos/:id" element={<Layout><LaudoForm /></Layout>} />
             <Route path="/laudos/:id/editar" element={<Layout><LaudoForm /></Layout>} />
+            <Route path="/perfil" element={<Layout><Perfil /></Layout>} />
+            <Route path="/configuracoes" element={<Layout><Configuracoes /></Layout>} />
+            <Route path="/relatorio-fotografico" element={<Layout><RelatorioFotografico /></Layout>} />
+            <Route path="/gerar-pdf" element={<Layout><GerarPDF /></Layout>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

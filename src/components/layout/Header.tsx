@@ -20,6 +20,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { useAuth } from '@/context/AuthContext';
+import { Link } from 'react-router-dom';
 
 export function Header() {
   const { user, logout } = useAuth();
@@ -41,6 +42,12 @@ export function Header() {
               <span className="sr-only">Toggle Menu</span>
             </Button>
           </SidebarTrigger>
+        </div>
+        
+        <div className="md:hidden">
+          <Link to="/dashboard">
+            <img src="/logo.png" alt="PeritoHub" className="h-10" />
+          </Link>
         </div>
         
         <div className="flex-1">
@@ -84,10 +91,10 @@ export function Header() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-56">
               <DropdownMenuItem asChild>
-                <a href="/perfil" className="cursor-pointer">Meu Perfil</a>
+                <Link to="/perfil" className="cursor-pointer">Meu Perfil</Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
-                <a href="/configuracoes" className="cursor-pointer">Configurações</a>
+                <Link to="/configuracoes" className="cursor-pointer">Configurações</Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={logout} className="cursor-pointer">

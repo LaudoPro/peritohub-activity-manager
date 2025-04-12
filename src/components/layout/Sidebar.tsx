@@ -12,7 +12,9 @@ import {
   Settings,
   User,
   Plus,
-  PenTool
+  PenTool,
+  Camera,
+  FileOutput
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
@@ -43,6 +45,8 @@ export function AppSidebar() {
   const actionItems = [
     { title: 'Novo Processo', icon: Plus, path: '/processos/novo' },
     { title: 'Novo Laudo', icon: PenTool, path: '/laudos/novo' },
+    { title: 'Relatório Fotográfico', icon: Camera, path: '/relatorio-fotografico' },
+    { title: 'Gerar PDF', icon: FileOutput, path: '/gerar-pdf' },
   ];
 
   const userMenuItems = [
@@ -53,7 +57,9 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader className="flex items-center justify-center p-4 border-b border-sidebar-border">
-        <h1 className="text-xl font-bold text-sidebar-foreground">PeritoHub</h1>
+        <NavLink to="/dashboard" className="flex items-center">
+          <img src="/logo.png" alt="PeritoHub" className="h-8" />
+        </NavLink>
       </SidebarHeader>
       
       <SidebarContent>
