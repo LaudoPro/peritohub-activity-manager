@@ -8,8 +8,12 @@ import { AuthProvider } from "./context/AuthContext";
 import { Layout } from "./components/layout/Layout";
 
 // Pages
+import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
 import Processos from "./pages/Processos";
+import ProcessoForm from "./pages/ProcessoForm";
+import Laudos from "./pages/Laudos";
+import LaudoForm from "./pages/LaudoForm";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
@@ -24,8 +28,15 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/login" element={<Layout requireAuth={false}><Login /></Layout>} />
-            <Route path="/" element={<Layout><Dashboard /></Layout>} />
+            <Route path="/" element={<Index />} />
+            <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
             <Route path="/processos" element={<Layout><Processos /></Layout>} />
+            <Route path="/processos/novo" element={<Layout><ProcessoForm /></Layout>} />
+            <Route path="/processos/:id" element={<Layout><ProcessoForm /></Layout>} />
+            <Route path="/laudos" element={<Layout><Laudos /></Layout>} />
+            <Route path="/laudos/novo" element={<Layout><LaudoForm /></Layout>} />
+            <Route path="/laudos/:id" element={<Layout><LaudoForm /></Layout>} />
+            <Route path="/laudos/:id/editar" element={<Layout><LaudoForm /></Layout>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

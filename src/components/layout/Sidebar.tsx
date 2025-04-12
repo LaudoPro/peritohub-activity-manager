@@ -10,7 +10,9 @@ import {
   Home,
   LogOut,
   Settings,
-  User
+  User,
+  Plus,
+  PenTool
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
@@ -31,11 +33,16 @@ export function AppSidebar() {
   const { logout } = useAuth();
   
   const menuItems = [
-    { title: 'Dashboard', icon: Home, path: '/' },
+    { title: 'Dashboard', icon: Home, path: '/dashboard' },
     { title: 'Processos', icon: Briefcase, path: '/processos' },
     { title: 'Laudos', icon: FileText, path: '/laudos' },
     { title: 'Financeiro', icon: Calculator, path: '/financeiro' },
     { title: 'Relatórios', icon: BarChart3, path: '/relatorios' },
+  ];
+
+  const actionItems = [
+    { title: 'Novo Processo', icon: Plus, path: '/processos/novo' },
+    { title: 'Novo Laudo', icon: PenTool, path: '/laudos/novo' },
   ];
 
   const userMenuItems = [
@@ -55,6 +62,30 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <NavLink 
+                      to={item.path} 
+                      className={({ isActive }) => cn(
+                        "w-full",
+                        isActive ? "bg-sidebar-accent text-sidebar-accent-foreground" : ""
+                      )}
+                    >
+                      <item.icon className="h-5 w-5" />
+                      <span>{item.title}</span>
+                    </NavLink>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        
+        <SidebarGroup>
+          <SidebarGroupLabel>Ações Rápidas</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {actionItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <NavLink 
